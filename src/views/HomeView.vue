@@ -19,7 +19,7 @@ export default {
   },
   created() {
     axios({
-      url: "http://localhost:3000/",
+      url: "/dev-api/",
       method: "GET",
     })
       .then((response) => {
