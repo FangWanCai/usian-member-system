@@ -25,6 +25,16 @@ module.exports = defineConfig({
         pathRewrite: {
           ["^" + process.env.VUE_APP_BASE_API]: ''
         }
+      },
+      [process.env.VUE_APP_BASE_API1]: {
+        // 跨域的地址
+        target: process.env.VUE_APP_SERVICE_URL1,
+        // 开启跨域
+        changeOrigin: true,
+        // 路径重写
+        pathRewrite: {
+          ["^" + process.env.VUE_APP_BASE_API1]: ''
+        }
       }
       // "/dev-api": {
       //   // 跨域的地址

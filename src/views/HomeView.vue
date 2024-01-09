@@ -19,7 +19,7 @@ export default {
   },
   created() {
     axios({
-      url: "/dev-api/",
+      url: process.env.VUE_APP_BASE_API + "/",
       method: "GET",
     })
       .then((response) => {
@@ -27,6 +27,17 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+      });
+
+    axios({
+      url: process.env.VUE_APP_BASE_API1 + "/",
+      method: "GET",
+    })
+      .then((response) => {
+        console.log(response, "4000");
+      })
+      .catch((error) => {
+        console.log(error, "4000");
       });
   },
 };
