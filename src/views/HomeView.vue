@@ -10,7 +10,10 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 
 // axios
-import axios from "axios";
+// import axios from "axios";
+
+// service
+import request from "../utils/request";
 
 export default {
   name: "HomeView",
@@ -18,7 +21,7 @@ export default {
     HelloWorld,
   },
   created() {
-    axios({
+    request({
       url: process.env.VUE_APP_BASE_API + "/",
       method: "GET",
     })
@@ -29,7 +32,7 @@ export default {
         console.log(error);
       });
 
-    axios({
+    request({
       url: process.env.VUE_APP_BASE_API1 + "/",
       method: "GET",
     })
