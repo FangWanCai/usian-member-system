@@ -1,6 +1,9 @@
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
   transpileDependencies: true,
+
+  // 打包后白屏问题
+  publicPath: "./",
   devServer: {
     // 端口号
     port: 8888,
@@ -13,16 +16,26 @@ module.exports = defineConfig({
 
     // 配置跨域
     proxy: {
-      "/dev-api": {
+      [process.env.VUE_APP_BASE_API]: {
         // 跨域的地址
-        target: "http://localhost:3000",
+        target: process.env.VUE_APP_SERVICE_URL,
         // 开启跨域
         changeOrigin: true,
         // 路径重写
         pathRewrite: {
-          "^/dev-api": ''
+          ["^" + process.env.VUE_APP_BASE_API]: ''
         }
       }
+      // "/dev-api": {
+      //   // 跨域的地址
+      //   target: "http://localhost:3000",
+      //   // 开启跨域
+      //   changeOrigin: true,
+      //   // 路径重写
+      //   pathRewrite: {
+      //     "^/dev-api": ''
+      //   }
+      // }
     }
   },
   // 关闭eslint
